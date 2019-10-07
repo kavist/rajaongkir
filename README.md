@@ -1,3 +1,5 @@
+![PHP RajaOngkir](https://rawcdn.githack.com/kavist/rajaongkir/tree/master/cover.png)
+
 # Klien API PHP untuk RajaOngkir
 [![Latest Version](https://img.shields.io/github/release/kavist/rajaongkir.svg?style=flat-square)![PHP Version Required](https://img.shields.io/packagist/php-v/kavist/rajaongkir.svg?style=flat-square)](https://github.com/kavist/rajaongkir/releases)
 [![MIT Licensed](https://img.shields.io/github/license/kavist/rajaongkir.svg?style=flat-square)](LICENSE)
@@ -22,6 +24,7 @@ Paket pustaka PHP untuk mengakses API RajaOngkir dengan mudah.
 
 ## Persyaratan Sistem
 * PHP 7.0 (direkomendasikan untuk menggunakan PHP 7.1 atau lebih tinggi).
+* Ekstensi cURL untuk PHP: `php-curl`
 
 ## Instalasi
 Gunakan [Composer](https://getcomposer.org) untuk menginstal pustaka ini.
