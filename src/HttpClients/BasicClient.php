@@ -83,14 +83,14 @@ class BasicClient extends AbstractClient
         return $response['results'];
     }
 
-    private function stopIfClientReturnsError(int $errno): void
+    private function stopIfClientReturnsError(int $errno)
     {
         if ($errno) {
             throw new BasicHttpClientException('cURL Error: '.curl_strerror($errno), $errno);
         }
     }
 
-    private function stopIfApiReturnsError(array $status): void
+    private function stopIfApiReturnsError(array $status)
     {
         if (400 == $status['code']) {
             throw new ApiResponseException('RajaOngkir API Error: '.$status['description']);

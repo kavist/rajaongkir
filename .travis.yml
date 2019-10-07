@@ -1,7 +1,6 @@
 language: php
 
 php:
-  - 7.0
   - 7.1
   - 7.2
   - 7.3
@@ -17,7 +16,6 @@ before_script:
   - sed -i '/codedungeon\/phpunit-result-printer/d' composer.json
   - sed -i '/spatie\/phpunit-watcher/d' composer.json
   - echo "${TRAVIS_PHP_VERSION:0:3}"
-  - if [[ "${TRAVIS_PHP_VERSION:0:3}" == "7.0" ]]; then sed -i 's/\(testbench.\+\?\)4.1/\13.5/g' composer.json; sed -i 's/\(phpunit.\+\?\)8.0/\16.5/g' composer.json; fi
   - if [[ "${TRAVIS_PHP_VERSION:0:3}" == "7.1" ]]; then sed -i 's/\(testbench.\+\?\)4.1/\13.8/g' composer.json; sed -i 's/\(phpunit.\+\?\)8.0/\17.5/g' composer.json; fi
   - cat composer.json
   - travis_retry composer update ${COMPOSER_FLAGS} --prefer-source --no-interaction

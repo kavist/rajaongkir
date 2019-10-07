@@ -1,4 +1,8 @@
 # Klien API PHP untuk RajaOngkir
+[![Latest Version](https://img.shields.io/github/release/kavist/rajaongkir.svg?style=flat-square)](https://github.com/kavist/rajaongkir/releases)
+[![MIT Licensed](https://img.shields.io/github/license/kavist/rajaongkir.svg?style=flat-square)](LICENSE)
+[![Build Status](https://img.shields.io/travis/kavist/rajaongkir/master.svg?style=flat-square)](https://travis-ci.org/kavist/rajaongkir)
+[![StyleCI](https://styleci.io/repos/32067087/shield)](https://styleci.io/repos/32067087)
 
 Paket pustaka PHP untuk mengakses API RajaOngkir dengan mudah.
 
@@ -15,6 +19,9 @@ Paket pustaka PHP untuk mengakses API RajaOngkir dengan mudah.
 #### _To Do_
 - [ ] Fitur di tipe akun Basic dan Pro.
 - [ ] Pencarian _fuzzy_ (menggunakan [Fuse](https://github.com/loilo/Fuse)).
+
+## Persyaratan Sistem
+* PHP 7.0 (direkomendasikan untuk menggunakan PHP 7.1 atau lebih tinggi).
 
 ## Instalasi
 Gunakan [Composer](https://getcomposer.org) untuk menginstal pustaka ini.
@@ -201,7 +208,7 @@ Silakan membaca [tata cara berkontribusi](CONTRIBUTING.md) untuk informasi lengk
 
 ## Kontributor
 - [Ian Mustafa](https://github.com/ianmustafa)
-- [Seluruh Kontributor](contributors)
+- [Seluruh Kontributor](https://github.com/kavist/rajaongkir/contributors)
 
 ## Lisensi
 The MIT License (MIT). Silakan membaca [berkas lisensi](LICENSE) untuk informasi lengkap.
