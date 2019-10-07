@@ -1,0 +1,55 @@
+{
+    "name": "kavist/rajaongkir",
+    "description": "Klien API PHP untuk RajaOngkir",
+    "keywords": [
+        "rajaongkir",
+        "laravel"
+    ],
+    "homepage": "https://github.com/kavist/rajaongkir",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ian Mustafa",
+            "email": "mail@ianmustafa.com",
+            "role": "Maintainer"
+        }
+    ],
+    "require": {
+        "php": "^7.0"
+    },
+    "require-dev": {
+        "codedungeon/phpunit-result-printer": "^0.26.2",
+        "fzaninotto/faker": "^1.8",
+        "mockery/mockery": "^1.2",
+        "orchestra/testbench": "^3.8",
+        "phpunit/phpunit": "^8.0",
+        "spatie/phpunit-watcher": "^1.12"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kavist\\RajaOngkir\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kavist\\RajaOngkir\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "watch": "vendor/bin/phpunit-watcher"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kavist\\RajaOngkir\\Providers\\LaravelServiceProvider"
+            ],
+            "aliases": {
+                "RajaOngkir": "Kavist\\RajaOngkir\\Facades\\RajaOngkir"
+            }
+        }
+    }
+}
