@@ -1,4 +1,4 @@
-![PHP RajaOngkir](https://rawcdn.githack.com/kavist/rajaongkir/tree/master/cover.png)
+![PHP RajaOngkir](https://rawcdn.githack.com/kavist/rajaongkir/38bae45b88c98e94ecb20a460403e7484c6c2bb4/cover.png)
 
 # Klien API PHP untuk RajaOngkir
 [![Latest Version](https://img.shields.io/github/release/kavist/rajaongkir.svg?style=flat-square)![PHP Version Required](https://img.shields.io/packagist/php-v/kavist/rajaongkir.svg?style=flat-square)](https://github.com/kavist/rajaongkir/releases)
@@ -18,13 +18,16 @@ Paket pustaka PHP untuk mengakses API RajaOngkir dengan mudah.
 - [x] Pencarian kota/kabupaten berdasarkan nama.
 - [x] Ambil biaya pengiriman (ongkos kirim/ongkir).
 
+
 #### _To Do_
 - [ ] Fitur di tipe akun Basic dan Pro.
 - [ ] Pencarian _fuzzy_ (menggunakan [Fuse](https://github.com/loilo/Fuse)).
 
+
 ## Persyaratan Sistem
 * PHP 7.0 (direkomendasikan untuk menggunakan PHP 7.1 atau lebih tinggi).
 * Ekstensi cURL untuk PHP: `php-curl`
+
 
 ## Instalasi
 Gunakan [Composer](https://getcomposer.org) untuk menginstal pustaka ini.
@@ -39,20 +42,32 @@ Anda juga bisa menambahkan dependensi ke `composer.json`.
     }
 }
 ```
-
 ### Integrasi ke Laravel
 Bagi pengguna Laravel 5.5 atau lebih tinggi, paket ini akan tersedia secara otomatis 
-berkat fitur _auto-discovery_.  Anda cukup mengatur nilai `RAJAONGKIR_API_KEY` dan 
-`RAJAONGKIR_PACKAGE` ke _environment variable_.
+berkat fitur _auto-discovery_. Anda bisa langsung lanjut ke bagian 
+[konfigurasi untuk Laravel](#konfigurasi-untuk-laravel) di bawah.
+
+Bagi pengguna Laravel sebelum versi 5.5, **kode dalam proyek ini tidak dites di versi Laravel dibawah 5.5.**
+Jadi, dimohon pengertiannya jika koded tidak dapat berjalan.
+
+
+## Konfigurasi
+Untuk pengguna PHP _native_, deklarasikan API key sebagai parameter ketika Anda 
+menginstansiasi _class_ `Kavist\RajaOngkir\RajaOngkir`.
+```php
+$rajaOngkir = new RajaOngkir('isi_API_key_Anda_disini');
+```
+### Konfigurasi untuk Laravel
+Anda cukup mengatur nilai `RAJAONGKIR_API_KEY` dan  `RAJAONGKIR_PACKAGE` ke _environment variable_.
 ```env
 RAJAONGKIR_API_KEY=isi_API_key_Anda_disini
 RAJAONGKIR_PACKAGE=starter
 ```
-Anda juga bisa menerbitkan berkas konfigurasi paket ini untuk konfigirasi 
-lebih jauh.
+Anda juga bisa menerbitkan berkas konfigurasi paket ini untuk konfigirasi lebih jauh.
 ```sh
 $ php artisan vendor:publish --provider="Kavist\RajaOngkir\Providers\RajaOngkirServiceProvider"
 ```
+
 
 ## Penggunaan
 ### Provinsi
@@ -62,7 +77,7 @@ Untuk mendapatkan daftar provinsi, gunakan metode `provinsi()->all()`.
 // Native PHP
 use Kavist\RajaOngkir\RajaOngkir;
 
-$rajaOngkir = new RajaOngkir();
+$rajaOngkir = new RajaOngkir($apiKey);
 $daftarProvinsi = $rajaOngkir->provinsi()->all();
 
 // Laravel
@@ -77,7 +92,7 @@ Untuk mendapatkan provinsi berdasarkan ID, gunakan metode `provinsi()->find(int 
 // Native PHP
 use Kavist\RajaOngkir\RajaOngkir;
 
-$rajaOngkir = new RajaOngkir();
+$rajaOngkir = new RajaOngkir($apiKey);
 $daftarProvinsi = $rajaOngkir->provinsi()->find(11);
 
 // Laravel
@@ -92,7 +107,7 @@ Untuk mencari provinsi berdasarkan nama, gunakan metode `provinsi()->search(stri
 // Native PHP
 use Kavist\RajaOngkir\RajaOngkir;
 
-$rajaOngkir = new RajaOngkir();
+$rajaOngkir = new RajaOngkir($apiKey);
 $daftarProvinsi = $rajaOngkir->provinsi()->search('ja')->get();
 
 // Laravel
@@ -108,7 +123,7 @@ Untuk mendapatkan daftar kota/kabupaten, gunakan metode `kota()->all()`.
 // Native PHP
 use Kavist\RajaOngkir\RajaOngkir;
 
-$rajaOngkir = new RajaOngkir();
+$rajaOngkir = new RajaOngkir($apiKey);
 $daftarProvinsi = $rajaOngkir->kota()->all();
 
 // Laravel
@@ -123,7 +138,7 @@ Untuk mendapatkan kota/kabupaten berdasarkan ID, gunakan metode `kota()->find(in
 // Native PHP
 use Kavist\RajaOngkir\RajaOngkir;
 
-$rajaOngkir = new RajaOngkir();
+$rajaOngkir = new RajaOngkir($apiKey);
 $daftarProvinsi = $rajaOngkir->kota()->find(80);
 
 // Laravel
@@ -138,7 +153,7 @@ Untuk mendapatkan kota/kabupaten berdasarkan ID provinsinya, gunakan metode `kot
 // Native PHP
 use Kavist\RajaOngkir\RajaOngkir;
 
-$rajaOngkir = new RajaOngkir();
+$rajaOngkir = new RajaOngkir($apiKey);
 $daftarProvinsi = $rajaOngkir->kota()->dariProvinsi(11)->find(80);
 
 // Laravel
@@ -153,7 +168,7 @@ Untuk mencari kota/kabupaten berdasarkan nama, gunakan metode `kota()->search(st
 // Native PHP
 use Kavist\RajaOngkir\RajaOngkir;
 
-$rajaOngkir = new RajaOngkir();
+$rajaOngkir = new RajaOngkir($apiKey);
 $daftarProvinsi = $rajaOngkir->kota()->search('su')->get();
 
 // Laravel
@@ -168,7 +183,7 @@ metode `dariProvinsi()` sebelum memanggil metode `search()`.
 // Native PHP
 use Kavist\RajaOngkir\RajaOngkir;
 
-$rajaOngkir = new RajaOngkir();
+$rajaOngkir = new RajaOngkir($apiKey);
 $daftarProvinsi = $rajaOngkir->kota()->dariProvinsi(11)->search('su')->get();
 
 // Laravel
@@ -183,7 +198,7 @@ Untuk mengambil biaya pengiriman, gunakan metode `ongkosKirim(array $payload)`.
 // Native PHP
 use Kavist\RajaOngkir\RajaOngkir;
 
-$rajaOngkir = new RajaOngkir();
+$rajaOngkir = new RajaOngkir($apiKey);
 $daftarProvinsi = $rajaOngkir->ongkosKirim([
     'origin'        => 155,     // ID kota/kabupaten asal
     'destination'   => 80,      // ID kota/kabupaten tujuan
@@ -197,21 +212,26 @@ use Kavist\RajaOngkir\Facades\RajaOngkir;
 $daftarProvinsi = RajaOngkir::kota()->dariProvinsi(11)->search('su')->get();
 ```
 
+
 ## Pengujian
 Jalankan pengujian dengan perintah berikut.
 ```sh
 $ vendor/bin/phpunit
 ```
 
+
 ## Log Perubahan
 Silakan membaca [log perubahan](CHANGELOG.md) untuk informasi lengkap.
+
 
 ## Ingin berkontribusi?
 Silakan membaca [tata cara berkontribusi](CONTRIBUTING.md) untuk informasi lengkap.
 
+
 ## Kontributor
 - [Ian Mustafa](https://github.com/ianmustafa)
 - [Seluruh Kontributor](https://github.com/kavist/rajaongkir/contributors)
+
 
 ## Lisensi
 The MIT License (MIT). Silakan membaca [berkas lisensi](LICENSE) untuk informasi lengkap.
