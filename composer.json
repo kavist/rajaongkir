@@ -19,11 +19,11 @@
     },
     "require-dev": {
         "codedungeon/phpunit-result-printer": "^0.26.2",
+        "spatie/phpunit-watcher": "^1.12",
         "fzaninotto/faker": "^1.8",
+        "orchestra/testbench": "^4.1",
         "mockery/mockery": "^1.2",
-        "orchestra/testbench": "^3.8",
-        "phpunit/phpunit": "^8.0",
-        "spatie/phpunit-watcher": "^1.12"
+        "phpunit/phpunit": "^8.0"
     },
     "autoload": {
         "psr-4": {

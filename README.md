@@ -24,7 +24,7 @@ $ composer require kavist/rajaongkir:^1.0
 Anda juga bisa menambahkan dependensi ke `composer.json`.
 ```json
 {
-    "require: {
+    "require": {
         "kavist/rajaongkir": "^1.0"
     }
 }
