@@ -1,8 +1,8 @@
 # Klien API PHP untuk RajaOngkir
 [![Latest Version](https://img.shields.io/github/release/kavist/rajaongkir.svg?style=flat-square)](https://github.com/kavist/rajaongkir/releases)
 [![MIT Licensed](https://img.shields.io/github/license/kavist/rajaongkir.svg?style=flat-square)](LICENSE)
-[![Build Status](https://img.shields.io/travis/kavist/rajaongkir/master.svg?style=flat-square)](https://travis-ci.org/kavist/rajaongkir)
-[![StyleCI](https://styleci.io/repos/32067087/shield)](https://styleci.io/repos/32067087)
+[![Build Status](https://img.shields.io/travis/kavist/rajaongkir/master.svg?style=flat-square&logo=travis)](https://travis-ci.org/kavist/rajaongkir)
+[![StyleCI](https://styleci.io/repos/212767959/shield)](https://styleci.io/repos/212767959)
 
 Paket pustaka PHP untuk mengakses API RajaOngkir dengan mudah.
 
