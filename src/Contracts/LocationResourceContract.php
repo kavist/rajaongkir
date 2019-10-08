@@ -21,10 +21,10 @@ interface LocationResourceContract
     public function all(): array;
 
     /**
-     * @param int $id
+     * @param int|string $id
      * @return array
      */
-    public function find(int $id): array;
+    public function find($id): array;
 
     /**
      * @return array
