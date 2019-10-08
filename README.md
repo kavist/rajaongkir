@@ -87,7 +87,7 @@ $daftarProvinsi = RajaOngkir::provinsi()->all();
 ```
 
 #### Ambil provinsi berdasarkan ID
-Untuk mendapatkan provinsi berdasarkan ID, gunakan metode `provinsi()->find(int $id)`.
+Untuk mendapatkan provinsi berdasarkan ID, gunakan metode `provinsi()->find(int|string $id)`.
 ```php
 // Native PHP
 use Kavist\RajaOngkir\RajaOngkir;
@@ -133,7 +133,7 @@ $daftarProvinsi = RajaOngkir::kota()->all();
 ```
 
 #### Ambil kota/kabupaten berdasarkan ID
-Untuk mendapatkan kota/kabupaten berdasarkan ID, gunakan metode `kota()->find(int $id)`.
+Untuk mendapatkan kota/kabupaten berdasarkan ID, gunakan metode `kota()->find(int|string $id)`.
 ```php
 // Native PHP
 use Kavist\RajaOngkir\RajaOngkir;
@@ -148,7 +148,7 @@ $daftarProvinsi = RajaOngkir::kota()->find(80);
 ```
 
 #### Daftar kota/kabupaten berdasarkan ID provinsinya
-Untuk mendapatkan kota/kabupaten berdasarkan ID provinsinya, gunakan metode `kota()->dariProvinsi(int $provinceId)->get()`.
+Untuk mendapatkan kota/kabupaten berdasarkan ID provinsinya, gunakan metode `kota()->dariProvinsi(int|string $provinceId)->get()`.
 ```php
 // Native PHP
 use Kavist\RajaOngkir\RajaOngkir;
@@ -209,8 +209,15 @@ $daftarProvinsi = $rajaOngkir->ongkosKirim([
 // Laravel
 use Kavist\RajaOngkir\Facades\RajaOngkir;
 
-$daftarProvinsi = RajaOngkir::kota()->dariProvinsi(11)->search('su')->get();
+$daftarProvinsi = RajaOngkir::ongkosKirim([
+    'origin'        => 155,     // ID kota/kabupaten asal
+    'destination'   => 80,      // ID kota/kabupaten tujuan
+    'weight'        => 1300,    // berat barang dalam gram
+    'courier'       => 'jne'    // kode kurir pengiriman: ['jne', 'tiki', 'pos'] untuk starter
+]);
 ```
+Selain metode `ongkosKirim()`, juga tersedia metode `ongkir()` dan `biaya()` sebagai 
+alias dari metode `ongkosKirim()`.
 
 
 ## Pengujian
