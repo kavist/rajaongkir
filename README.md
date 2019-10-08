@@ -1,9 +1,10 @@
 ![Klien API RajaOngkir untuk PHP](https://rawcdn.githack.com/kavist/rajaongkir/38bae45b88c98e94ecb20a460403e7484c6c2bb4/cover.png)
 
 # Klien API RajaOngkir untuk PHP
-[![Latest Version](https://img.shields.io/github/v/release/kavist/rajaongkir?sort=semver&style=flat-square)](https://github.com/kavist/rajaongkir/releases)
-[![Packagist Version](https://img.shields.io/packagist/v/kavist/rajaongkir?style=flat-square) ![PHP Version Required](https://img.shields.io/packagist/php-v/kavist/rajaongkir?style=flat-square)](https://packagist.org/packages/kavist/rajaongkir)
-[![MIT Licensed](https://img.shields.io/github/license/kavist/rajaongkir?style=flat-square)](LICENSE)
+[![Latest Version](https://img.shields.io/github/v/release/kavist/rajaongkir?label=Release&sort=semver&style=flat-square)](https://github.com/kavist/rajaongkir/releases)
+[![Packagist Version](https://img.shields.io/packagist/v/kavist/rajaongkir?label=Packagist&style=flat-square)](https://packagist.org/packages/kavist/rajaongkir)
+![PHP Version Required](https://img.shields.io/packagist/php-v/kavist/rajaongkir?label=PHP%20Version&style=flat-square)
+[![MIT Licensed](https://img.shields.io/github/license/kavist/rajaongkir?label=License&style=flat-square)](LICENSE)
 [![Build Status](https://img.shields.io/travis/kavist/rajaongkir?label=Travis%20CI%20build&style=flat-square)](https://travis-ci.org/kavist/rajaongkir)
 [![StyleCI](https://styleci.io/repos/212767959/shield)](https://styleci.io/repos/212767959)
 
