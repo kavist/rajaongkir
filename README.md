@@ -1,9 +1,10 @@
-![PHP RajaOngkir](https://rawcdn.githack.com/kavist/rajaongkir/38bae45b88c98e94ecb20a460403e7484c6c2bb4/cover.png)
+![Klien API RajaOngkir untuk PHP](https://rawcdn.githack.com/kavist/rajaongkir/38bae45b88c98e94ecb20a460403e7484c6c2bb4/cover.png)
 
-# Klien API PHP untuk RajaOngkir
-[![Latest Version](https://img.shields.io/github/release/kavist/rajaongkir.svg?style=flat-square)![PHP Version Required](https://img.shields.io/packagist/php-v/kavist/rajaongkir.svg?style=flat-square)](https://github.com/kavist/rajaongkir/releases)
-[![MIT Licensed](https://img.shields.io/github/license/kavist/rajaongkir.svg?style=flat-square)](LICENSE)
-[![Build Status](https://img.shields.io/travis/kavist/rajaongkir/master.svg?style=flat-square&logo=travis)](https://travis-ci.org/kavist/rajaongkir)
+# Klien API RajaOngkir untuk PHP
+[![Latest Version](https://img.shields.io/github/v/release/kavist/rajaongkir?sort=semver&style=flat-square)](https://github.com/kavist/rajaongkir/releases)
+[![Packagist Version](https://img.shields.io/packagist/v/kavist/rajaongkir?style=flat-square) ![PHP Version Required](https://img.shields.io/packagist/php-v/kavist/rajaongkir?style=flat-square)](https://packagist.org/packages/kavist/rajaongkir)
+[![MIT Licensed](https://img.shields.io/github/license/kavist/rajaongkir?style=flat-square)](LICENSE)
+[![Build Status](https://img.shields.io/travis/kavist/rajaongkir?label=Travis%20CI%20build&style=flat-square)](https://travis-ci.org/kavist/rajaongkir)
 [![StyleCI](https://styleci.io/repos/212767959/shield)](https://styleci.io/repos/212767959)
 
 Paket pustaka PHP untuk mengakses API RajaOngkir dengan mudah.
@@ -48,20 +49,19 @@ berkat fitur _auto-discovery_. Anda bisa langsung lanjut ke bagian
 [konfigurasi untuk Laravel](#konfigurasi-untuk-laravel) di bawah.
 
 Bagi pengguna Laravel sebelum versi 5.5, **kode dalam proyek ini tidak dites di versi Laravel dibawah 5.5.**
-Jadi, dimohon pengertiannya jika koded tidak dapat berjalan.
+Jadi, dimohon pengertiannya jika pustaka ini tidak dapat berjalan dengan semestinya.
 
 
 ## Konfigurasi
-Untuk pengguna PHP _native_, deklarasikan API key sebagai parameter ketika Anda 
+Untuk pengguna PHP _native_, deklarasikan kunci API sebagai parameter ketika Anda 
 menginstansiasi _class_ `Kavist\RajaOngkir\RajaOngkir`.
 ```php
 $rajaOngkir = new RajaOngkir('isi_API_key_Anda_disini');
 ```
 ### Konfigurasi untuk Laravel
-Anda cukup mengatur nilai `RAJAONGKIR_API_KEY` dan  `RAJAONGKIR_PACKAGE` ke _environment variable_.
+Anda cukup mengatur nilai `RAJAONGKIR_API_KEY` yang berisi kunci API ke _environment variable_.
 ```env
 RAJAONGKIR_API_KEY=isi_API_key_Anda_disini
-RAJAONGKIR_PACKAGE=starter
 ```
 Anda juga bisa menerbitkan berkas konfigurasi paket ini untuk konfigirasi lebih jauh.
 ```sh
