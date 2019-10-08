@@ -27,10 +27,10 @@ class Kota extends AbstractLocation
     }
 
     /**
-     * @param int $provinceId
+     * @param int|string $provinceId
      * @return self
      */
-    public function dariProvinsi(int $provinceId): self
+    public function dariProvinsi($provinceId): self
     {
         $this->result = $this->httpClient->request(['province' => $provinceId]);
 

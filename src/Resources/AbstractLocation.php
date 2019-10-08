@@ -35,10 +35,10 @@ abstract class AbstractLocation extends AbstractResource implements LocationReso
     }
 
     /**
-     * @param int $id
+     * @param int|string $id
      * @return array
      */
-    public function find(int $id): array
+    public function find($id): array
     {
         return $this->httpClient->request(compact('id'));
     }
