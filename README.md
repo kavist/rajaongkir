@@ -28,19 +28,18 @@ Paket pustaka PHP untuk mengakses API RajaOngkir dengan mudah.
 
 ## Persyaratan Sistem
 * PHP 7.0 (direkomendasikan untuk menggunakan PHP 7.1 atau lebih tinggi).
-* Ekstensi cURL untuk PHP: `php-curl`
 
 
 ## Instalasi
 Gunakan [Composer](https://getcomposer.org) untuk menginstal pustaka ini.
 ```sh
-$ composer require kavist/rajaongkir:^1.0
+$ composer require kavist/rajaongkir:^1.1
 ```
 Anda juga bisa menambahkan dependensi ke `composer.json`.
 ```json
 {
     "require": {
-        "kavist/rajaongkir": "^1.0"
+        "kavist/rajaongkir": "^1.1"
     }
 }
 ```

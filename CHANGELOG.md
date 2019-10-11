@@ -1,6 +1,9 @@
 # Log Perubahan
 Semua perubahan dalam proyek ini akan dicatat disini.
 
+## v1.1.0 - 2019-10-11
+- Mengubah implementasi `BasicClient` ke `file_get_contents()`.
+
 ## v1.0.2 - 2019-10-09
 - _Quick patch_ untuk memastikan kompatibilitas dengan PHP 7.1.
 
