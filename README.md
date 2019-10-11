@@ -66,7 +66,7 @@ RAJAONGKIR_API_KEY=isi_API_key_Anda_disini
 ```
 Anda juga bisa menerbitkan berkas konfigurasi paket ini untuk konfigirasi lebih jauh.
 ```sh
-$ php artisan vendor:publish --provider="Kavist\RajaOngkir\Providers\RajaOngkirServiceProvider"
+$ php artisan vendor:publish --provider="Kavist\RajaOngkir\Providers\LaravelServiceProvider"
 ```
 
 
