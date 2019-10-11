@@ -2,7 +2,7 @@
 
 namespace Kavist\RajaOngkir\Tests\Integration;
 
-use Kavist\RajaOngkir\Exceptions\ApiResponseException;
+use Kavist\RajaOngkir\Exceptions\BasicHttpClientException;
 use Kavist\RajaOngkir\Exceptions\InvalidConfigurationException;
 use Kavist\RajaOngkir\Facades\RajaOngkir;
 
@@ -29,7 +29,7 @@ class RajaOngkirServiceProviderTest extends TestCase
     {
         $this->app['config']->set('rajaongkir.api_key', 'wrongapikey');
 
-        $this->expectException(ApiResponseException::class);
+        $this->expectException(BasicHttpClientException::class);
 
         RajaOngkir::provinsi()->all();
     }

@@ -2,44 +2,44 @@
 
 namespace Kavist\RajaOngkir\HttpClients;
 
+use EngineException;
 use Kavist\RajaOngkir\Exceptions\ApiResponseException;
 use Kavist\RajaOngkir\Exceptions\BasicHttpClientException;
 
 class BasicClient extends AbstractClient
 {
     /** @var resource */
-    protected $curl;
+    protected $context;
 
     /** @var array */
-    protected $curlOptions = [
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_ENCODING => '',
-        CURLOPT_MAXREDIRS => 5,
-        CURLOPT_TIMEOUT => 30,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    protected $contextOptions = [
+        'max_redirects' => 5,
+        'timeout' => 30,
+        'protocol_version' => 1.1,
+        'method' => 'GET',
     ];
 
     public function request(array $payload = []): array
     {
-        $curlOptions = [
-            CURLOPT_CUSTOMREQUEST => $this->httpMethod,
-            CURLOPT_URL => $this->buildUrl($payload),
-            CURLOPT_HTTPHEADER => $this->buildHttpHeaders(),
+        $contextOptions = [
+            'method' => $this->httpMethod,
+            'header' => $this->buildHttpHeaders(),
         ];
 
         if ('POST' === $this->httpMethod) {
-            $curlOptions[CURLOPT_POSTFIELDS] = http_build_query($payload);
+            $contextOptions['content'] = http_build_query($payload);
         }
 
-        $this->initialize($curlOptions);
+        $this->initialize($contextOptions);
 
-        return $this->executeRequest();
+        return $this->executeRequest($this->buildUrl($payload));
     }
 
-    protected function initialize(array $curlOptions = [])
+    protected function initialize(array $contextOptions = [])
     {
-        $this->curl = curl_init();
-        curl_setopt_array($this->curl, $this->curlOptions + $curlOptions);
+        $this->context = stream_context_create([
+            'http' => array_merge($this->contextOptions, $contextOptions),
+        ]);
     }
 
     protected function buildUrl(array $payload = []): string
@@ -53,7 +53,7 @@ class BasicClient extends AbstractClient
         return $url;
     }
 
-    private function buildHttpHeaders(): array
+    private function buildHttpHeaders(): string
     {
         $headers = $this->httpHeaders;
 
@@ -62,19 +62,23 @@ class BasicClient extends AbstractClient
         }
 
         foreach ($headers as $headerKey => $headerValue) {
-            $headers[$headerKey] = $headerKey.':'.$headerValue;
+            $headers[$headerKey] = $headerKey.':'.$headerValue."\r\n";
         }
 
-        return array_values($headers);
+        return implode($headers);
     }
 
-    private function executeRequest(): array
+    private function executeRequest(string $url): array
     {
-        $rawResponse = curl_exec($this->curl);
-        $errno = curl_errno($this->curl);
-        curl_close($this->curl);
+        set_error_handler(function ($severity, $message) {
+            throw new BasicHttpClientException('Client Error: '.$message, $severity);
+        });
 
-        $this->stopIfClientReturnsError($errno);
+        $rawResponse = file_get_contents($url, false, $this->context);
+
+        restore_error_handler();
+
+        $this->stopIfClientReturnsError($rawResponse);
 
         $response = json_decode($rawResponse, true)['rajaongkir'];
 
@@ -83,10 +87,10 @@ class BasicClient extends AbstractClient
         return $response['results'];
     }
 
-    private function stopIfClientReturnsError(int $errno)
+    private function stopIfClientReturnsError($status)
     {
-        if ($errno) {
-            throw new BasicHttpClientException('cURL Error: '.curl_strerror($errno), $errno);
+        if (false === $status) {
+            throw new BasicHttpClientException('Client Error');
         }
     }
 
