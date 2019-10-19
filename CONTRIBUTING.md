@@ -19,7 +19,7 @@ Sebelum mengajukan _pull request_:
 
 - **Tambahkan pengujian untuk fitur baru** - Pengajuan fitur baru yang dilengkapi dengan pengujian akan lebih cepat diterima, karena memudahkan proses _review_.
 
-- **Dokumentasikan semau perubahan yang terjadi** - Pastikan berkas `README.md` dan dokumentasi lain yang terkait sudah diperbarui.
+- **Dokumentasikan semua perubahan yang terjadi** - Pastikan berkas `README.md` dan dokumentasi lain yang terkait sudah diperbarui.
 
 - **Satu _pull request_ per fitur** - Jika Anda ingin melakukan lebih dari satu hal, pisah menjadi beberapa _pull request_.
 
