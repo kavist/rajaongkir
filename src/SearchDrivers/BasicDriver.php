@@ -10,10 +10,15 @@ class BasicDriver extends AbstractDriver
      */
     public function search(string $searchQuery): array
     {
+        $result = [];
+
         $rowColumn = array_column($this->collection, $this->searchColumn);
-        $s = preg_replace('/(\s|$)/', '.+?$1', preg_quote($searchQuery, '/'));
-        $res = preg_grep('/^'.$s.'/i', $rowColumn);
+        $data = array_map('strtolower', $rowColumn);
+        $q = trim(strtolower($searchQuery));
+        $cari = preg_quote($q, '/'); 
+        $res = preg_grep('/' . $cari . '/', $data);
         $resKey = array_keys($res);
+        
         foreach ($this->collection as $key => $val) {
             if (in_array($key, $resKey)) {
                 $result[] = $val;
