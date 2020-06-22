@@ -2,6 +2,8 @@
 
 namespace Kavist\RajaOngkir\Tests\Unit;
 
+use Kavist\RajaOngkir\Exceptions\InvalidConfigurationException;
+
 class RajaOngkirTest extends TestCase
 {
     /** @var int */
@@ -10,11 +12,17 @@ class RajaOngkirTest extends TestCase
     /** @var int */
     private $cityId = 80;
 
+    /** @var int */
+    private $subdistrictId = 537;
+
     /** @var string */
     private $provinceSearchTerm = 'ja t';
 
     /** @var string */
     private $citySearchTerm = 'su';
+
+    /** @var string */
+    private $subdistrictSearchTerm = 'ban';
 
     /** @test */
     public function it_can_fetch_provinces()
@@ -132,6 +140,96 @@ class RajaOngkirTest extends TestCase
             ->andReturn($mock);
 
         $response = $this->rajaOngkir->kota()->search($this->citySearchTerm)->get();
+
+        $this->assertEquals($expectedSearchResult, $response);
+    }
+
+    /** @expectedException Kavist\RajaOngkir\Exceptions\InvalidConfigurationException */
+    public function it_can_not_fetch_subdistricts_with_non_pro_package()
+    {
+        $mock = $this->mock('kecamatan');
+
+        $this->httpClient
+            ->expects()->request()
+            ->andReturn($mock);
+
+        $this->rajaOngkir->kecamatan()->all();
+
+        $this->expectException(InvalidConfigurationException::class);
+    }
+
+    /** @test */
+    public function it_can_fetch_subdistricts()
+    {
+        $mock = $this->mock('kecamatan');
+
+        $this->httpClient
+            ->expects()->request()
+            ->andReturn($mock);
+
+        $response = $this->rajaOngkirPro->kecamatan()->all();
+
+        $this->assertEquals($mock, $response);
+    }
+
+    /** @test */
+    public function it_can_fetch_subdistrict_by_id()
+    {
+        $mock = $this->mock('kecamatan', $this->subdistrictId);
+
+        $this->httpClient
+            ->expects()->request(['id' => $this->subdistrictId])
+            ->andReturn($mock);
+
+        $response = $this->rajaOngkirPro->kecamatan()->find($this->subdistrictId);
+
+        $this->assertEquals($mock, $response);
+    }
+
+    /** @test */
+    public function it_can_fetch_subdistricts_by_its_city()
+    {
+        $mock = $this->mock('kecamatan', $this->cityId);
+
+        $this->httpClient
+            ->expects()->request(['city' => $this->cityId])
+            ->andReturn($mock);
+
+        $response = $this->rajaOngkirPro->kecamatan()->dariKota($this->cityId)->get();
+
+        $this->assertEquals($mock, $response);
+    }
+
+    /** @test */
+    public function it_can_search_subdistricts_by_name()
+    {
+        $mock = $this->mock('kecamatan');
+        $expectedSearchResult = [
+            [
+                'subdistrict_id' => '538',
+                'province_id' => '5',
+                'province' => 'DI Yogyakarta',
+                'city_id' => '39',
+                'city' => 'Bantul',
+                'type' => 'Kabupaten',
+                'subdistrict_name' => 'Banguntapan'
+            ],
+            [
+                'subdistrict_id' => '539',
+                'province_id' => '5',
+                'province' => 'DI Yogyakarta',
+                'city_id' => '39',
+                'city' => 'Bantul',
+                'type' => 'Kabupaten',
+                'subdistrict_name' => 'Bantul'
+            ],
+        ];
+
+        $this->httpClient
+            ->expects()->request()
+            ->andReturn($mock);
+
+        $response = $this->rajaOngkirPro->kecamatan()->search($this->subdistrictSearchTerm)->get();
 
         $this->assertEquals($expectedSearchResult, $response);
     }

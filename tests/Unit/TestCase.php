@@ -24,6 +24,9 @@ class TestCase extends PHPUnitTestCase
     /** @var \Kavist\RajaOngkir\RajaOngkir */
     protected $rajaOngkir;
 
+    /** @var \Kavist\RajaOngkir\RajaOngkir */
+    protected $rajaOngkirPro;
+
     public function setUp(): void
     {
         $this->httpClient = Mockery::mock(BasicClient::class, HttpClientContract::class)
@@ -37,6 +40,9 @@ class TestCase extends PHPUnitTestCase
 
         $this->rajaOngkir = new RajaOngkir('d41d8cd98f00b204e9800998ecf8427e', 'starter');
         $this->rajaOngkir->setHttpClient($this->httpClient);
+
+        $this->rajaOngkirPro = new RajaOngkir('d41d8cd98f00b204e9800998ecf8427e', 'pro');
+        $this->rajaOngkirPro->setHttpClient($this->httpClient);
     }
 
     public function tearDown(): void
