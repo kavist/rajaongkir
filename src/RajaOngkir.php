@@ -103,7 +103,7 @@ class RajaOngkir
      */
     public function kecamatan(): Kecamatan
     {
-        if('pro' === $this->package) {
+        if ('pro' === $this->package) {
             $resource = new Kecamatan($this->httpClient);
 
             if (null === $this->searchDriver) {

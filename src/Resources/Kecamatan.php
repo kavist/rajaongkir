@@ -4,7 +4,8 @@ namespace Kavist\RajaOngkir\Resources;
 
 use Kavist\RajaOngkir\HttpClients\AbstractClient;
 
-class Kecamatan extends AbstractLocation {
+class Kecamatan extends AbstractLocation
+{
 
     /**
      * @param \Kavist\RajaOngkir\HttpClients\AbstractClient $httpClient
