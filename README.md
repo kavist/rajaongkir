@@ -192,6 +192,86 @@ use Kavist\RajaOngkir\Facades\RajaOngkir;
 $daftarProvinsi = RajaOngkir::kota()->dariProvinsi(11)->search('su')->get();
 ```
 
+### Kecamatan
+
+> API ini hanya tersedia untuk paket `Pro`. Periksa [dokumentasi](https://rajaongkir.com/dokumentasi) untuk melihat perbandingan fitur yang tersedia
+
+#### Daftar Kecamatan
+Untuk mendapatkan daftar kecamatan, gunakan metode `kecamatan()->all()`.
+
+```php
+// Native PHP
+use Kavist\RajaOngkir\RajaOngkir;
+
+$rajaOngkir = new RajaOngkir($apiKey, 'pro');
+$daftarKecamatan = $rajaOngkir->kecamatan()->all();
+
+// Laravel
+use Kavist\RajaOngkir\Facades\RajaOngkir;
+
+$daftarKecamatan = RajaOngkir::kecamatan()->all();
+```
+
+#### Ambil Kecamatan Berdasarkan ID
+Untuk mendapatkan kecamatab berdasarkan ID, gunakan metode `kecamatan()->find(int|string $id)`.
+```php
+// Native PHP
+use Kavist\RajaOngkir\RajaOngkir;
+
+$rajaOngkir = new RajaOngkir($apiKey, 'pro');
+$daftarKecamatan = $rajaOngkir->kecamatan()->find(80);
+
+// Laravel
+use Kavist\RajaOngkir\Facades\RajaOngkir;
+
+$daftarKecamatan = RajaOngkir::kecamatan()->find(80);
+```
+
+#### Daftar Kecamatan Berdasarkan ID Kota
+Untuk mendapatkan kecamatan berdasarkan ID kotanya, gunakan metode `kecamatan()->dariKota(int|string $cityId)->get()`.
+```php
+// Native PHP
+use Kavist\RajaOngkir\RajaOngkir;
+
+$rajaOngkir = new RajaOngkir($apiKey, 'pro');
+$daftarKecamatan = $rajaOngkir->kecamatan()->dariKota(39)->get();
+
+// Laravel
+use Kavist\RajaOngkir\Facades\RajaOngkir;
+
+$daftarKecamatan = RajaOngkir::kota()->dariKota(39)->get();
+```
+
+#### Pencarian Kecamatan Berdasarkan Nama
+Untuk mencari Kecamatan berdasarkan nama, gunakan metode `kecamatan()->search(string $searchTerm)->get()`.
+```php
+// Native PHP
+use Kavist\RajaOngkir\RajaOngkir;
+
+$rajaOngkir = new RajaOngkir($apiKey, 'pro');
+$daftarKecamatan = $rajaOngkir->kecamatan()->search('ban')->get();
+
+// Laravel
+use Kavist\RajaOngkir\Facades\RajaOngkir;
+
+$daftarKecamatan = RajaOngkir::kecamatan()->search('ban')->get();
+```
+
+Anda juga bisa mencari kecamatan dari kota tertentu dengan memanggil 
+metode `dariKota()` sebelum memanggil metode `search()`.
+```php
+// Native PHP
+use Kavist\RajaOngkir\RajaOngkir;
+
+$rajaOngkir = new RajaOngkir($apiKey, 'pro');
+$daftarKecamatan = $rajaOngkir->kecamatan()->dariKota(39)->search('ban')->get();
+
+// Laravel
+use Kavist\RajaOngkir\Facades\RajaOngkir;
+
+$daftarKecamatan = RajaOngkir::kecamatan()->dariKota(39)->search('ban')->get();
+```
+
 ## Pencarian biaya pengiriman
 Untuk mengambil biaya pengiriman, gunakan metode `ongkosKirim(array $payload)`.
 ```php
