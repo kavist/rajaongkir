@@ -18,6 +18,10 @@ Paket pustaka PHP untuk mengakses API RajaOngkir dengan mudah.
 - [x] Daftar kota/kabupaten berdasarkan ID provinsinya.
 - [x] Ambil kota/kabupaten berdasarkan ID.
 - [x] Pencarian kota/kabupaten berdasarkan nama.
+- [x] (Pro) Daftar semua kecamatan.
+- [x] (Pro) Daftar kecamatan berdasarkan ID Kota.
+- [x] (Pro) Ambil kecamatan berdasarkan ID.
+- [x] (Pro) Pencarian kecamatan berdasarkan nama.
 - [x] Ambil biaya pengiriman (ongkos kirim/ongkir).
 
 
