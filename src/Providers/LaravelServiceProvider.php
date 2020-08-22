@@ -2,11 +2,12 @@
 
 namespace Kavist\RajaOngkir\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Kavist\RajaOngkir\Exceptions\InvalidConfigurationException;
-use Kavist\RajaOngkir\HttpClients\BasicClient;
 use Kavist\RajaOngkir\RajaOngkir;
+use Illuminate\Support\ServiceProvider;
+use Kavist\RajaOngkir\HttpClients\BasicClient;
+use Kavist\RajaOngkir\HttpClients\GuzzleClient;
 use Kavist\RajaOngkir\SearchDrivers\BasicDriver;
+use Kavist\RajaOngkir\Exceptions\InvalidConfigurationException;
 
 class LaravelServiceProvider extends ServiceProvider
 {
@@ -27,8 +28,8 @@ class LaravelServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../../config/rajaongkir.php', 'rajaongkir');
 
-        $this->app->bind(BasicClient::class, function () {
-            return new BasicClient;
+        $this->app->bind(GuzzleClient::class, function () {
+            return new GuzzleClient;
         });
 
         $this->app->bind(BasicDriver::class, function () {
