@@ -127,12 +127,12 @@ Untuk mendapatkan daftar kota/kabupaten, gunakan metode `kota()->all()`.
 use Kavist\RajaOngkir\RajaOngkir;
 
 $rajaOngkir = new RajaOngkir($apiKey);
-$daftarProvinsi = $rajaOngkir->kota()->all();
+$$daftarKota = $rajaOngkir->kota()->all();
 
 // Laravel
 use Kavist\RajaOngkir\Facades\RajaOngkir;
 
-$daftarProvinsi = RajaOngkir::kota()->all();
+$daftarKota = RajaOngkir::kota()->all();
 ```
 
 #### Ambil kota/kabupaten berdasarkan ID
@@ -142,12 +142,12 @@ Untuk mendapatkan kota/kabupaten berdasarkan ID, gunakan metode `kota()->find(in
 use Kavist\RajaOngkir\RajaOngkir;
 
 $rajaOngkir = new RajaOngkir($apiKey);
-$daftarProvinsi = $rajaOngkir->kota()->find(80);
+$daftarKota = $rajaOngkir->kota()->find(80);
 
 // Laravel
 use Kavist\RajaOngkir\Facades\RajaOngkir;
 
-$daftarProvinsi = RajaOngkir::kota()->find(80);
+$daftarKota = RajaOngkir::kota()->find(80);
 ```
 
 #### Daftar kota/kabupaten berdasarkan ID provinsinya
@@ -157,12 +157,12 @@ Untuk mendapatkan kota/kabupaten berdasarkan ID provinsinya, gunakan metode `kot
 use Kavist\RajaOngkir\RajaOngkir;
 
 $rajaOngkir = new RajaOngkir($apiKey);
-$daftarProvinsi = $rajaOngkir->kota()->dariProvinsi(11)->find(80);
+$daftarKota = $rajaOngkir->kota()->dariProvinsi(11)->find(80);
 
 // Laravel
 use Kavist\RajaOngkir\Facades\RajaOngkir;
 
-$daftarProvinsi = RajaOngkir::kota()->dariProvinsi(11)->find(80);
+$daftarKota = RajaOngkir::kota()->dariProvinsi(11)->find(80);
 ```
 
 #### Pencarian kota/kabupaten berdasarkan nama
@@ -172,12 +172,12 @@ Untuk mencari kota/kabupaten berdasarkan nama, gunakan metode `kota()->search(st
 use Kavist\RajaOngkir\RajaOngkir;
 
 $rajaOngkir = new RajaOngkir($apiKey);
-$daftarProvinsi = $rajaOngkir->kota()->search('su')->get();
+$daftarKota = $rajaOngkir->kota()->search('su')->get();
 
 // Laravel
 use Kavist\RajaOngkir\Facades\RajaOngkir;
 
-$daftarProvinsi = RajaOngkir::kota()->search('su')->get();
+$daftarKota = RajaOngkir::kota()->search('su')->get();
 ```
 
 Anda juga bisa mencari kota/kabupaten dari provinsi tertentu dengan memanggil 
@@ -187,12 +187,12 @@ metode `dariProvinsi()` sebelum memanggil metode `search()`.
 use Kavist\RajaOngkir\RajaOngkir;
 
 $rajaOngkir = new RajaOngkir($apiKey);
-$daftarProvinsi = $rajaOngkir->kota()->dariProvinsi(11)->search('su')->get();
+$daftarKota = $rajaOngkir->kota()->dariProvinsi(11)->search('su')->get();
 
 // Laravel
 use Kavist\RajaOngkir\Facades\RajaOngkir;
 
-$daftarProvinsi = RajaOngkir::kota()->dariProvinsi(11)->search('su')->get();
+$daftarKota = RajaOngkir::kota()->dariProvinsi(11)->search('su')->get();
 ```
 
 ### Kecamatan
@@ -247,27 +247,48 @@ $daftarKecamatan = RajaOngkir::kecamatan()->dariKota(39)->search('ban')->get();
 ```
 
 ## Pencarian biaya pengiriman
+
 Untuk mengambil biaya pengiriman, gunakan metode `ongkosKirim(array $payload)`.
 ```php
 // Native PHP
 use Kavist\RajaOngkir\RajaOngkir;
 
 $rajaOngkir = new RajaOngkir($apiKey);
-$daftarProvinsi = $rajaOngkir->ongkosKirim([
+$ongkir = $rajaOngkir->ongkosKirim([
     'origin'        => 155,     // ID kota/kabupaten asal
     'destination'   => 80,      // ID kota/kabupaten tujuan
     'weight'        => 1300,    // berat barang dalam gram
     'courier'       => 'jne'    // kode kurir pengiriman: ['jne', 'tiki', 'pos'] untuk starter
 ]);
 
+// untuk paket Pro perlu ditambahkan tipe origin dan tipe destination karena mendukung pencarian sampai kecamatan
+$ongkir = $rajaOngkir->ongkosKirim([
+    'origin'          => 501,           // ID kota/kabupaten asal
+    'originType'      => 'city',        // tipe asal city atau subdistrict
+    'destination'     => 574,           // ID kota/kabupaten tujuan
+    'destinationType' => 'subdistrict', // tipe tujuan city atau subdistrict
+    'weight'          => 1300,          // berat barang dalam gram
+    'courier'         => 'jne:pos:tiki' // kode kurir pengiriman, bisa digabungkan dengan pemisah tanda ":" untuk pencarian lebih dari satu kurir 
+]);
+
 // Laravel
 use Kavist\RajaOngkir\Facades\RajaOngkir;
 
-$daftarProvinsi = RajaOngkir::ongkosKirim([
+$ongkir = RajaOngkir::ongkosKirim([
     'origin'        => 155,     // ID kota/kabupaten asal
     'destination'   => 80,      // ID kota/kabupaten tujuan
     'weight'        => 1300,    // berat barang dalam gram
     'courier'       => 'jne'    // kode kurir pengiriman: ['jne', 'tiki', 'pos'] untuk starter
+]);
+
+// untuk paket Pro perlu ditambahkan tipe origin dan tipe destination karena mendukung pencarian sampai kecamatan
+$ongkir = RajaOngkir::ongkosKirim([
+    'origin'          => 501,           // ID kota/kabupaten asal
+    'originType'      => 'city',        // tipe asal city atau subdistrict
+    'destination'     => 574,           // ID kota/kabupaten tujuan
+    'destinationType' => 'subdistrict', // tipe tujuan city atau subdistrict
+    'weight'          => 1300,          // berat barang dalam gram
+    'courier'         => 'jne:pos:tiki' // kode kurir pengiriman, bisa digabungkan dengan pemisah tanda ":" untuk pencarian lebih dari satu kurir 
 ]);
 ```
 Selain metode `ongkosKirim()`, juga tersedia metode `ongkir()` dan `biaya()` sebagai 
