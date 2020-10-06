@@ -13,4 +13,9 @@ class InvalidConfigurationException extends \Exception
     {
         return new static('Tipe akun RajaOngkir yang diatur tidak sesuai. Pilih salah satu: starter, basic, pro.');
     }
+
+    public static function unsupportedApiPackage(string $package = 'basic')
+    {
+        return new static('API ini tidak tersedia untuk paket ' . $package);
+    }
 }

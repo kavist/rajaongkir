@@ -6,6 +6,7 @@ use Kavist\RajaOngkir\Contracts\HttpClientContract;
 use Kavist\RajaOngkir\Contracts\SearchDriverContract;
 use Kavist\RajaOngkir\HttpClients\AbstractClient;
 use Kavist\RajaOngkir\HttpClients\BasicClient;
+use Kavist\RajaOngkir\Resources\Kecamatan;
 use Kavist\RajaOngkir\Resources\Kota;
 use Kavist\RajaOngkir\Resources\OngkosKirim;
 use Kavist\RajaOngkir\Resources\Provinsi;
@@ -93,6 +94,25 @@ class RajaOngkir
         }
 
         return $resource;
+    }
+
+    /**
+     * @return \Kavist\RajaOngkir\Resources\Kecamatan;
+     * @throws InvalidConfigurationException
+     */
+    public function kecamatan(): Kecamatan
+    {
+        if ('pro' === $this->package) {
+            $resource = new Kecamatan($this->httpClient);
+
+            if (null === $this->searchDriver) {
+                $resource->setSearchDriver(new BasicDriver);
+                $resource->setSearchColumn();
+            }
+
+            return $resource;
+        }
+        throw InvalidConfigurationException::unsupportedApiPackage($this->package);
     }
 
     /**
