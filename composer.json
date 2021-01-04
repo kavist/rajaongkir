@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "php": "^7.0"
+        "php": "^7.0|^8.0"
     },
     "require-dev": {
         "codedungeon/phpunit-result-printer": "^0.26.2",
