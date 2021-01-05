@@ -5,7 +5,7 @@ namespace Kavist\RajaOngkir\Resources;
 abstract class AbstractResource
 {
     /** @var array */
-    protected $result = [];
+    private $result = [];
 
     /** @var \Kavist\RajaOngkir\HttpClients\AbstractClient */
     protected $httpClient;
