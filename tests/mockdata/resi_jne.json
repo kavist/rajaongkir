@@ -1,0 +1,97 @@
+[{
+    "delivered": true,
+    "summary": {
+        "courier_code": "jne",
+        "courier_name": "Jalur Nugraha Ekakurir (JNE)",
+        "waybill_number": "540030016770920",
+        "service_code": "JTR",
+        "waybill_date": "2020-06-06",
+        "shipper_name": "LEONARDO",
+        "receiver_name": "LINDA ",
+        "origin": "TANGERANG",
+        "destination": "SERANG",
+        "status": "DELIVERED"
+    },
+    "details": {
+        "waybill_number": "540030016770920",
+        "waybill_date": "2020-06-06",
+        "waybill_time": "16:02",
+        "weight": "30",
+        "origin": "TANGERANG",
+        "destination": "SERANG",
+        "shippper_name": "LEONARDO",
+        "shipper_address1": ".",
+        "shipper_address2": ".",
+        "shipper_address3": "",
+        "shipper_city": "TANGERANG",
+        "receiver_name": "LINDA ",
+        "receiver_address1": "",
+        "receiver_address2": "",
+        "receiver_address3": "",
+        "receiver_city": "SERANG"
+    },
+    "delivery_status": {
+        "status": "DELIVERED",
+        "pod_receiver": "NADAM",
+        "pod_date": "2020-06-18",
+        "pod_time": "14:08"
+    },
+    "manifest": [
+        {
+            "manifest_code": "",
+            "manifest_description": "SHIPMENT RECEIVED BY JNE COUNTER OFFICER AT [TANGERANG]",
+            "manifest_date": "2020-06-06",
+            "manifest_time": "16:02",
+            "city_name": ""
+        },
+        {
+            "manifest_code": "",
+            "manifest_description": "RECEIVED AT SORTING CENTER [TANGERANG]",
+            "manifest_date": "2020-06-09",
+            "manifest_time": "09:20",
+            "city_name": ""
+        },
+        {
+            "manifest_code": "",
+            "manifest_description": "PROCESSED AT SORTING CENTER [TANGERANG]",
+            "manifest_date": "2020-06-07",
+            "manifest_time": "03:27",
+            "city_name": ""
+        },
+        {
+            "manifest_code": "",
+            "manifest_description": "PROCESSED AT SORTING CENTER [TANGERANG]",
+            "manifest_date": "2020-06-08",
+            "manifest_time": "18:31",
+            "city_name": ""
+        },
+        {
+            "manifest_code": "",
+            "manifest_description": "PROCESSED AT SORTING CENTER [TANGERANG]",
+            "manifest_date": "2020-06-15",
+            "manifest_time": "16:59",
+            "city_name": ""
+        },
+        {
+            "manifest_code": "",
+            "manifest_description": "RECEIVED AT WAREHOUSE [CILEGON]",
+            "manifest_date": "2020-06-16",
+            "manifest_time": "06:11",
+            "city_name": ""
+        },
+        {
+            "manifest_code": "",
+            "manifest_description": "WITH DELIVERY COURIER [CILEGON]",
+            "manifest_date": "2020-06-18",
+            "manifest_time": "11:57",
+            "city_name": ""
+        },
+        {
+            "manifest_code": "",
+            "manifest_description": "DELIVERED TO [NADAM | 18-06-2020 14:08 | CILEGON ]",
+            "manifest_date": "2020-06-18",
+            "manifest_time": "14:08",
+            "city_name": ""
+        }
+    ]
+}]

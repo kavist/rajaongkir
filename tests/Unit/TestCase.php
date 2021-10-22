@@ -24,6 +24,10 @@ class TestCase extends PHPUnitTestCase
     /** @var \Kavist\RajaOngkir\RajaOngkir */
     protected $rajaOngkir;
 
+    protected $availableCourier = [
+        'jne'
+    ];
+
     public function setUp(): void
     {
         $this->httpClient = Mockery::mock(BasicClient::class, HttpClientContract::class)
@@ -58,6 +62,20 @@ class TestCase extends PHPUnitTestCase
         }
 
         return $data;
+    }
+
+    protected function mockResi(string $courier, string $resi)
+    {
+        if (in_array($courier, $this->availableCourier)) {
+            $mockdata = __DIR__.'/../mockdata/resi_'.$courier.'.json';
+            $data = json_decode(file_get_contents($mockdata), true);
+            foreach ($data as $row) {
+                if ($row['details']['waybill_number'] == $resi) {
+                    return $row;
+                }
+            }
+        }
+        return [];
     }
 
     /**
