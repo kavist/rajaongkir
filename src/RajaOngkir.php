@@ -6,6 +6,7 @@ use Kavist\RajaOngkir\Contracts\HttpClientContract;
 use Kavist\RajaOngkir\Contracts\SearchDriverContract;
 use Kavist\RajaOngkir\HttpClients\AbstractClient;
 use Kavist\RajaOngkir\HttpClients\BasicClient;
+use Kavist\RajaOngkir\Resources\CekWaybill;
 use Kavist\RajaOngkir\Resources\Kota;
 use Kavist\RajaOngkir\Resources\OngkosKirim;
 use Kavist\RajaOngkir\Resources\Provinsi;
@@ -118,5 +119,13 @@ class RajaOngkir
     public function biaya(array $payload): OngkosKirim
     {
         return $this->ongkosKirim($payload);
+    }
+
+    /**
+     * @return \Kavist\RajaOngkir\Resources\CekWaybill;
+     */
+    public function waybill(array $payload): CekWaybill
+    {
+        return new CekWaybill($this->httpClient, $payload);
     }
 }
