@@ -1,5 +1,8 @@
 vendor/
+vendor
+vendor.nosync/
 .DS_Store
 composer.lock
 .phpunit.result.cache
 test.php
+.idea

@@ -11,10 +11,10 @@ class RajaOngkirTest extends TestCase
     private $cityId = 80;
 
     /** @var string */
-    private $provinceSearchTerm = 'ja t';
+    private $provinceSearchTerm = 'jawa t';
 
     /** @var string */
-    private $citySearchTerm = 'su';
+    private $citySearchTerm = 'sura';
 
     /** @test */
     public function it_can_fetch_provinces()
@@ -59,7 +59,7 @@ class RajaOngkirTest extends TestCase
 
         $response = $this->rajaOngkir->provinsi()->search($this->provinceSearchTerm)->get();
 
-        $this->assertEquals($expectedSearchResult, $response);
+        $this->assertSame($expectedSearchResult, $response);
     }
 
     /** @test */
@@ -109,14 +109,6 @@ class RajaOngkirTest extends TestCase
     {
         $mock = $this->mock('kota');
         $expectedSearchResult = [
-            [
-                'city_id' => '441',
-                'province_id' => '11',
-                'province' => 'Jawa Timur',
-                'type' => 'Kabupaten',
-                'city_name' => 'Sumenep',
-                'postal_code' => '69413',
-            ],
             [
                 'city_id' => '444',
                 'province_id' => '11',
