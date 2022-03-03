@@ -15,15 +15,15 @@
         }
     ],
     "require": {
-        "php": "^7.0"
+        "php": "^8.0"
     },
     "require-dev": {
-        "codedungeon/phpunit-result-printer": "^0.26.2",
-        "spatie/phpunit-watcher": "^1.12",
-        "fzaninotto/faker": "^1.8",
-        "orchestra/testbench": "^4.1",
+        "codedungeon/phpunit-result-printer": "^0.32.0",
+        "fakerphp/faker": "^1.19",
         "mockery/mockery": "^1.2",
-        "phpunit/phpunit": "^8.0"
+        "orchestra/testbench": "^6.24.1",
+        "phpunit/phpunit": "^9.5",
+        "spatie/phpunit-watcher": "^1.23"
     },
     "autoload": {
         "psr-4": {
